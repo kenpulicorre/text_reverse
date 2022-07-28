@@ -1,0 +1,61 @@
+.abs_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* min-height: 25vh; */
+  background: red;
+}
+.mayor_cotainer {
+  background: #e5e5e5;
+}
+.mayor_cotainer_result {
+  background: white;
+}
+.arreglo {
+  /* max-width: 100%; */
+  height: 100%;
+}
+
+.connect_me {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(44, 41, 41);
+}
+
+.centrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overflow {
+  /* width: 100%; */
+  /* height: 150px;
+  max-width: 150px; */
+  /* max-height: 100px; */
+
+  background-color: rgba(0, 0, 0, 0.959);
+  /* width: 100px; */
+  height: 150px;
+  /* overflow: scroll; */
+  overflow-x: scroll;
+}
+.text_justificado {
+  text-align: justify;
+  font-size: 10px;
+}
+
+.overflow_big {
+  /* width: 100%; */
+  /* height: 150px;
+  max-width: 150px; */
+  /* max-height: 100px; */
+
+  background-color: rgba(0, 0, 0, 0.959);
+  /* width: 100px; */
+  /* height: 150px; */
+  /* overflow: scroll; */
+  overflow-x: scroll;
+}

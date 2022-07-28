@@ -1,0 +1,29 @@
+.landing {
+  background-image: url("../access/landing.jpg");
+  min-height: 100vh;
+  background-size: cover;
+  position: relative;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.button {
+  /* display: flex; */
+  text-decoration: none;
+  /* justify-content: center; */
+  background: radial-gradient(
+    circle,
+    rgb(30, 83, 163) 0%,
+    rgba(119, 0, 65, 1) 80%
+  );
+  border: 1px solid rgb(194, 235, 12);
+  border-width: 5px;
+  border-radius: 10px;
+  box-shadow: rgb(31, 58, 88) -10px 10px 40px -15px;
+  padding: 10px 80px;
+  transition: 0.8s;
+}
+.button:hover {
+  transform: scale(1.2) rotate(5deg);
+}

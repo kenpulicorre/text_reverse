@@ -1,0 +1,231 @@
+//--------------------HOME COMPLETO
+import React, { Fragment } from "react";
+//hoooks
+import { useEffect, useState } from "react";
+import { connect, useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import estilos from "./Home.module.css";
+import ListGroup from "react-bootstrap/ListGroup";
+import Table from "react-bootstrap/Table";
+//acciones
+import { getAll } from "../actions/index.js";
+import accion1 from "../actions/index";
+
+//componentes
+import Form from "./Form";
+
+//-----------------------------------------
+var señal;
+export default function Home(params) {
+  //----hook iniciales---------
+  const dispatch = useDispatch();
+  const estados = useSelector((state) => state.textos);
+  const textAll = useSelector((state) => state.textoAll);
+  const textAll2 = textAll?.slice().reverse();
+  const [currentState, setCurrentState] = useState(false);
+  //------------------pokesToPage-----
+
+  //------------------fin pokesToPage-----
+
+  //cuando el componente se monta traer pokes
+
+  //----fin hook iniciales---------
+  //----funciones-----------------
+  useEffect(() => {
+    dispatch(getAll());
+  }, []);
+
+  const setStado = (e) => {
+    setCurrentState(e);
+    dispatch(getAll());
+  };
+  useEffect(() => {
+    console.log("---estado en home de todos cada /currentState/", textAll);
+    console.log("---estado en home de estados cada /currentState/", estados);
+    console.log("---estado en home de todos cada /currentState2/", textAll2);
+    if (textAll) {
+      console.log(
+        "---estado en home de estados ceroooooooo/",
+
+        textAll[0]?.name,
+        "reverse: ",
+        textAll[0]?.nameReverse,
+        "estados---"
+      );
+    }
+  }, [currentState]);
+
+  //---
+
+  //---
+
+  //---
+  //---
+
+  //
+
+  //leeer lo que se guarda en la base de datos
+
+  //----fin funciones--------------
+
+  //
+  // if (allPokemons.length < 1) {
+  //   return <Loader />;
+  // }
+
+  return (
+    <div className={`${estilos.mayor_cotainer}`}>
+      <div>
+        <div className={`row border border-danger ${estilos.abs_center}`}>
+          <div className="col-md-2"></div>
+          <div className="col-md-8">
+            <Form setStado={setStado} />
+          </div>
+          <div className="col-md-2"></div>
+        </div>
+      </div>
+
+      <div
+        className={`container border border-primary  ${estilos.mayor_cotainer_result}`}
+      >
+        <div className="row">
+          <div className="row  col-md-12">
+            <div className="col-md-2">
+              <h1>Results:</h1>
+            </div>
+            <div className="col-md-10"></div>
+          </div>
+          <div className="row  col-md-12">
+            <Table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>TEXT</th>
+                  <th>TEXT REVERSE</th>
+                  <th>PALINDROME</th>
+                </tr>
+              </thead>
+              <tbody>
+                {textAll2?.map((e, i) => {
+                  return (
+                    <tr>
+                      <td>{e.id}</td>
+                      <td>{e.name}</td>
+                      <td>{e.nameReverse}</td>
+                      <td>{e.palindrome ? "TRUE" : "FALSE"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
+          <div className="row  col-md-12">
+            <>
+              {textAll2?.map((e, i) => (
+                <div className="row  col-md-12">
+                  <div className="col-md-2"></div>
+                  <div className="col-md-8">
+                    <>
+                      <ListGroup key={e} horizontal={["xxl"]} className="my-2">
+                        <ListGroup.Item>
+                          texto: {e.name} | reverso: {e.nameReverse}
+                        </ListGroup.Item>
+                      </ListGroup>
+                    </>
+                  </div>
+                  <div className="col-md-2"></div>
+                </div>
+              ))}
+            </>
+          </div>
+
+          <div className="col-md-12">
+            {/* <div className="App ">
+              <h1>kenneth APP</h1>
+              <button type="button" className="btn btn-primary">
+                hola
+              </button>
+            </div> */}
+            <>
+              {["sm", "md", "lg", "xl", "xxl"].map((breakpoint) => (
+                <ListGroup
+                  key={breakpoint}
+                  horizontal={breakpoint}
+                  className="my-2"
+                >
+                  <ListGroup.Item>This ListGroup</ListGroup.Item>
+                  <ListGroup.Item>renders horizontally</ListGroup.Item>
+                  <ListGroup.Item>on {breakpoint}</ListGroup.Item>
+                  <ListGroup.Item>and above!</ListGroup.Item>
+                </ListGroup>
+              ))}
+            </>
+          </div>
+          <p>
+            React Users (create-react-app, or similar bundler) Modern JavaScript
+            bundlers (webpack, parcel, rollup) support importing CSS from JS
+            files. This can make it easier to deploy various 1st- and 3rd-party
+            assets predictably. Note: There are tradeoffs to the following
+            method, research your tooling before deploying to production. Before
+            continuing, ensure you've run npm install bootswatch in your local
+            project folder. (Use either npm or yarn.) Add the following import
+            to your top-level index.js (or App.js) file. Add it before any other
+            .css imports. import "bootswatch/dist/[theme]/bootstrap.min.css";
+          </p>
+          <div className="row  col-md-12">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
+              <>
+                <ListGroup horizontal={["xxl"]} className="my-2">
+                  <ListGroup.Item>on </ListGroup.Item>
+                </ListGroup>
+              </>
+            </div>
+            <div className="col-md-2"></div>
+          </div>
+          <div className="row  col-md-12">
+            <div className="col-md-2"></div>
+            <div className="col-md-8">
+              <>
+                <ListGroup horizontal={["xxl"]} className="my-2">
+                  <ListGroup.Item>on </ListGroup.Item>
+                </ListGroup>
+              </>
+            </div>
+            <div className="col-md-2"></div>
+          </div>
+          <div className="row  col-md-12">
+            <div className="col-md-2"> </div>
+            <div className="col-md-8">
+              <>
+                <ListGroup horizontal={["xxl"]} className="my-2">
+                  <ListGroup.Item>texto n!</ListGroup.Item>
+                </ListGroup>
+              </>
+            </div>
+            <div className="col-md-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <h1>¡MANIFIESTA TU POKEMON!</h1>
+      <div>
+        <Link to="/rutax">ira rutax</Link>
+        <button
+        // onClick={(e) => handleClick(e)}
+        >
+          Recargar
+        </button>
+
+        <Fragment>
+          <h1>hola</h1>
+        </Fragment>
+      </div>
+    </div>
+  );
+}
+
+
+//--------------------fin HOME COMPLETO
+
+
